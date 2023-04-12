@@ -16,7 +16,10 @@ export default function TextForm(props) {
         setenterText(event.target.value);
 
     }
-    const wordLength=enterText.split(" ").length;
+    const HandleRemoveTextClick=()=>{
+        setenterText('');
+    }
+    const wordLength=enterText.split(" ").toString().length;
     return (<div>
         <div className="container">
             <h2>{props.headings}</h2>
@@ -30,14 +33,15 @@ export default function TextForm(props) {
                     rows="8"
                 ></textarea>
             </div>
-            <button className="btn btn-primary col-3 mx-2" onClick={HandleUpClick}>Convert To Uppercase</button>
-            <button className="btn btn-primary col-3 mx-2" onClick={HandleLowClick}>Convert To Lowerrcase</button>
+            <button className="btn btn-primary col-2 mx-2" onClick={HandleUpClick}>Convert To Uppercase</button>
+            <button className="btn btn-warning col-2 mx-2" onClick={HandleLowClick}>Convert To Lowerrcase</button>
+            <button className="btn btn-danger col-2 mx-2" onClick={HandleRemoveTextClick}>Clear Text</button>
         </div>
         <div className="container my-3">
         <h2>Summary Of Text</h2>
-        <p>{wordLength }words and {enterText.length} Characters</p>
+        <p>{wordLength} words and {enterText.length} Characters</p>
         <p>Time Needed to read the Passage: {wordLength*0.008} Minutes </p>
-        <h2></h2>
+        <h2>Preview</h2>
         <p>{enterText}</p>
       </div>
         </div>
